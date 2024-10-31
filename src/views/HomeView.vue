@@ -11,7 +11,7 @@
             v-model="searchValue"
             placeholder="Search news"
           />
-          <p class="body-text" v-show="searchValue.length > 0">
+          <p class="body-text" v-show="searchValue.length > 0" >
             {{ filteredNews.length }} result(s) for "{{ searchValue }}""
           </p>
         </div>

@@ -28,13 +28,16 @@
 
       <div class="article__media--icon">
         <a :href="source_url" target="_blank">
-          <img :src="source_icon" alt="source icon" />
+          <img :src="source_icon" alt="source icon" 
+          @error="$event.target.src='@/assets/img/news.jpg'"
+          />
+          
         </a>
       </div>
       </div>
       <div class="article__img grayscale">
-        <img :src="img" v-if="img" />
-        <img src="@/assets/img/news.jpg" v-else />
+        <img :src="img" 
+          @error="$event.target.src='@/assets/img/news.jpg'"/>
       </div>
     </div>
   </div>

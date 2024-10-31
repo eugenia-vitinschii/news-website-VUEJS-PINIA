@@ -2,8 +2,8 @@
   <div class="home__item">
     <!-- home img -->
     <div class="home__img">
-      <img :src="img" v-if="img"/>
-      <img src="@/assets/img/news.jpg" v-else>
+      <img :src="img" 
+            @error="$event.target.src='https://s.france24.com/media/display/e6279b3c-db08-11ee-b7f5-005056bf30b7/w:1024/p:16x9/news_en_1920x1080.jpg'"/>
     </div>
     <!-- home title -->
     <div class="home__text">

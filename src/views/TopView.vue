@@ -30,6 +30,9 @@
             :source_url="item.source_url"
             :source_icon="item.source_icon"
           />
+        </div>    
+        <div class="home__button" v-show="store.complected">
+           <button class="read-more" @click="loadMore()">read more</button>
         </div>
       </div>
     </div>
@@ -61,7 +64,7 @@ function toggleStyle() {
 }
 
 const store = useNewsStore();
-const { fetchNews } = store;
+const {  loadMore } = store;
 
 watch(
   () => store.searchValue,
@@ -74,7 +77,7 @@ let created = ref(false);
 onMounted(() => {
   created.value = true
   console.log(created.value, 'top news, unMounted')
-  fetchNews();
+  loadMore ();
 });
 
 

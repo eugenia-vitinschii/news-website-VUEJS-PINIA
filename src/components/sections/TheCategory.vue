@@ -19,6 +19,7 @@
         </p>
       </div>
     </div>
+    <!-- category source img-->
     <div class="category__text--img">
         <a :href="source_url" target="_blank">
           <img :src="source_icon" alt="icon" />
@@ -26,8 +27,8 @@
       </div>
     <!--category img div-->
     <div class="category__img grayscale">
-      <img :src="img" v-if="img"/>
-      <img src="@/assets/img/news.jpg" v-else>
+     <img :src="img" 
+      @error="$event.target.src='https://s.france24.com/media/display/e6279b3c-db08-11ee-b7f5-005056bf30b7/w:1024/p:16x9/news_en_1920x1080.jpg'"/>
     </div>
   </div>
 </template>
@@ -49,8 +50,6 @@ defineProps({
   },
   img: {
     type: String,
-    default: '',
-    // default: require("@/assets/default-poster.png")
   },
   description: {
     type: String,
@@ -69,6 +68,3 @@ defineProps({
   },
 });
 </script>
-
-<style>
-</style>

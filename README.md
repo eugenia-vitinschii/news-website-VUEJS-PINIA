@@ -24,6 +24,9 @@ $\color{#00bcd4}{\textsf{responsive news website}}$
 *  sass grid, flex
 *  @media for font-size, content
 
+![news](https://github.com/user-attachments/assets/7af4370f-2b98-4885-9589-706dc6311ed9)
+
+
 
 # Folders
 

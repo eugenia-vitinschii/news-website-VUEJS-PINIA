@@ -6,6 +6,9 @@
         <div class="header__logo">
           <img src="@/assets/img/logo.jpg" alt="logo">
         </div>
+        <div class="header__toggle">
+          <button @click="theme.toggleTheme">{{ theme.currenTheme }}</button>
+        </div>
         <nav class="header__nav" :class="{ active: showBurger }">
           <ul v-on:click="showBurger = !showBurger">
             <li><router-link class="header__link" to="/">Home</router-link></li>
@@ -36,9 +39,14 @@
 <script setup>
 import { defineOptions, ref } from "vue";
 
+//theme
+import { useThemeStore } from "@/stores/theme";
+const theme = useThemeStore()
+
 defineOptions({
   name: "TheHeader",
 });
 
 const showBurger = ref(false);
+
 </script>

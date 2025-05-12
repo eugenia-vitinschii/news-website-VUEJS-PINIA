@@ -6,6 +6,25 @@ $\color{#00bcd4}{\textsf{responsive news website}}$
 ![SASS](https://img.shields.io/badge/SASS-00bcd4?style=flat&logo=sass&logoColor=fff)
 ![HTML](https://img.shields.io/badge/HTML%205-00bcd4?style=flat&logo=html5&logoColor=fff)
  
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+###   \{^_^}/ hi!
+
+###  Loading db.json
+```
+json-server -w db.json
+```
+### Run All
+```
+npm run dev
+
 ### News website short about:
 *  <meta > description, keywords, theme-color...
 *  Pinia store  (fetchNews(), sortNews(),  ...)
@@ -26,7 +45,7 @@ $\color{#00bcd4}{\textsf{responsive news website}}$
 
 
 # Folders
-
+```
 src
    - assets
       - sass
@@ -67,22 +86,5 @@ src
       - ...View.vue
    - App.vue
    main.js
-
-
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-###   \{^_^}/ hi!
-
-###  Loading db.json
-```
-json-server -w db.json
-```
+``
 

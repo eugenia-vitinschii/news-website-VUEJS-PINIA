@@ -1,36 +1,32 @@
 .heading
-   @include font-style($heading, 60px, $white)
-   @include  gradient-text($gradient-1)
+   @include font-style($heading, 60px, $dark-blue)
    font-weight: bold
 
 .heading-category
-   @include font-style($heading, 60px, $white)
-   @include  gradient-text($gradient-2)
+   @include font-style($heading, 60px, $graphite)
    font-weight: bold
 
 .subheading
-   @include font-style($subheading, 40px, $white)
-   @include  gradient-text($gradient-1)
+   @include font-style($subheading, 40px, $graphite)
+
 
 
 .body-text
-   @include font-style($body-text, 20px, $white)
+   @include font-style($body-text, 20px, $graphite)
 
 .body-text-category
-   @include font-style(12px, 20px, $yellow)
+   @include font-style(12px, 20px, $blue)
 
 @media (max-width: 767px)
    .heading, .heading-category
-      @include font-style($heading-sm, 30px, $white)
-      @include  gradient-text($gradient-1)
+      @include font-style($heading-sm, 30px, $graphite)
    .subheading
-      @include font-style($subheading-sm, 20px,$white)
-      @include  gradient-text($gradient-2)
+      @include font-style($subheading-sm, 20px,$graphite)
    .body-text
-      @include font-style($body-text-sm, 20px, $white)
+      @include font-style($body-text-sm, 20px, $graphite)
 
 .link
    transition: $transition
 
 .link:hover
-   color: $yellow
+   color: $hover-text

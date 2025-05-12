@@ -1,4 +1,4 @@
-import './assets/css/app.css'
+import './assets/sass/app.sass'
 
  
 import {createPinia} from 'pinia';

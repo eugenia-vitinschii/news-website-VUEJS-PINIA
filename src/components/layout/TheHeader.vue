@@ -3,6 +3,9 @@
   <div class="header">
     <div class="container">
       <div class="header__wrapper">
+        <div class="header__logo">
+          <img src="@/assets/img/logo.jpg" alt="logo">
+        </div>
         <nav class="header__nav" :class="{ active: showBurger }">
           <ul v-on:click="showBurger = !showBurger">
             <li><router-link class="header__link" to="/">Home</router-link></li>

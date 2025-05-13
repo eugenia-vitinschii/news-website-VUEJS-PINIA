@@ -80,11 +80,12 @@ src
       - index.js
    - stores
       - news.js
+      - theme.js
    - views
       - ...View.vue
       - ...View.vue
       - ...View.vue
    - App.vue
    main.js
-``
+```
 

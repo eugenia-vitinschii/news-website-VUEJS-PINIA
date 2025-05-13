@@ -1,32 +1,31 @@
 .heading
-   @include font-style($heading, 60px, $dark-blue)
+   @include font-style($heading, 60px,  var(--text-color))
    font-weight: bold
 
 .heading-category
-   @include font-style($heading, 60px, $graphite)
+   @include font-style($heading, 60px,  var(--text-color))
    font-weight: bold
 
 .subheading
-   @include font-style($subheading, 40px, $graphite)
+   @include font-style($subheading, 40px, var(--text-color))
 
 
 
 .body-text
-   @include font-style($body-text, 20px, $graphite)
-
+   @include font-style($body-text, 20px,  var(--text-color))
 .body-text-category
-   @include font-style(12px, 20px, $blue)
+   @include font-style(12px, 20px, var(--accent-color))
 
 @media (max-width: 767px)
    .heading, .heading-category
-      @include font-style($heading-sm, 30px, $graphite)
+      @include font-style($heading-sm, 30px,  var(--text-color))
    .subheading
-      @include font-style($subheading-sm, 20px,$graphite)
+      @include font-style($subheading-sm, 20px, var(--text-color))
    .body-text
-      @include font-style($body-text-sm, 20px, $graphite)
+      @include font-style($body-text-sm, 20px,  var(--text-color))
 
 .link
    transition: $transition
 
 .link:hover
-   color: $hover-text
+   color: var(--accent-color)

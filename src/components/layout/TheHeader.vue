@@ -7,7 +7,7 @@
           <img src="@/assets/img/logo.jpg" alt="logo">
         </div>
         <div class="header__toggle">
-          <button @click="theme.toggleTheme">{{ theme.currenTheme }}</button>
+          <theme-switch/>
         </div>
         <nav class="header__nav" :class="{ active: showBurger }">
           <ul v-on:click="showBurger = !showBurger">
@@ -39,9 +39,8 @@
 <script setup>
 import { defineOptions, ref } from "vue";
 
-//theme
-import { useThemeStore } from "@/stores/theme";
-const theme = useThemeStore()
+//components
+import ThemeSwitch from "../components/ThemeSwitch.vue";
 
 defineOptions({
   name: "TheHeader",

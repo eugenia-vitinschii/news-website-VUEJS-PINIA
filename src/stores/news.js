@@ -8,7 +8,8 @@ export const useNewsStore = defineStore("newsId", {
     searchValue: '',
     limit: 5,
     page: 1,
-    complected: true
+    complected: true,
+    isLoading: false
   }),
   getters: {
     getNews(state){
@@ -43,11 +44,12 @@ export const useNewsStore = defineStore("newsId", {
         const response = await axios.get(`${baseUrl}/news`);
         this.news = response.data;
       } catch (error) {
-        console.err("fetchNews news error:", error);
+        console.error("fetchNews news error:", error);
       }
     },
     async loadMore() {
       // read more news from db.json
+      this.isLoading = true
       this.page++
       console.log(this.page)
       try {
@@ -58,6 +60,8 @@ export const useNewsStore = defineStore("newsId", {
         }
       } catch (error) {
         console.error("loadMore news error:", error);
+      } finally{
+        this.isLoading = false
       }
     },
     async fetchNewsById(id) {

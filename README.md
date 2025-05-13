@@ -24,6 +24,10 @@ json-server -w db.json
 ### Run All
 ```
 npm run dev
+```
+### Features
+- Skeleton
+- Infinite scroll
 
 ### News website short about:
 *  <meta > description, keywords, theme-color...
@@ -45,6 +49,7 @@ npm run dev
 
 
 # Folders
+
 ```
 src
    - assets
@@ -87,5 +92,6 @@ src
       - ...View.vue
    - App.vue
    main.js
+
 ```
 

@@ -49,15 +49,18 @@ export const useNewsStore = defineStore("newsId", {
     },
     async loadMore() {
       // read more news from db.json
+      if( this.isLoading || !this.complected) return;
       this.isLoading = true
       this.page++
-      console.log(this.page)
+
       try {
         const response = await axios.get(`${baseUrl}/news?_page=${this.page}&_limit=${this.limit}`);
-        this.news.push(...response.data);
         if(response.data.length < this.limit){
          this.complected = false
         }
+        await new Promise(response => setTimeout(response, 500));
+
+        this.news.push(...response.data);
       } catch (error) {
         console.error("loadMore news error:", error);
       } finally{

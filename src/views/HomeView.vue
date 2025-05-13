@@ -10,11 +10,7 @@
             {{ filteredNews.length }} result(s) for "{{ searchValue }}""
           </p>
         </div>
-        <div class="home__items" v-if="isLoading">
-          <the-skeleton v-for="i in 5" :key="i" />
-        </div>
-        <div class="home__items" v-else>
-          <the-skeleton v-for="i in 2" :key="i" />
+        <div class="home__items">
           <the-item 
           v-for="item in filteredNews" 
           :key="item.title" 
@@ -28,6 +24,9 @@
             :keywords="item.keywords" 
             />
         </div>
+                <div class="home__items" v-if="isLoading">
+          <the-skeleton v-for="i in 5" :key="i" />
+        </div>
         <div class="home__button" v-show="store.complected">
           <button class="read-more" @click="loadMore()">read more</button>
         </div>
@@ -40,13 +39,17 @@
 //vue
 import { defineOptions, onMounted, watch, ref, onUnmounted, computed } from "vue";
 
+//import components
+import TheItem from "@/components/sections/TheItem.vue";
+import TheSkeleton from "@/components/core/TheSkeleton.vue";
+
 //pinia
 import { useNewsStore } from "@/stores/news";
 import { storeToRefs } from "pinia";
 
-//import components
-import TheItem from "@/components/sections/TheItem.vue";
-import TheSkeleton from "@/components/core/TheSkeleton.vue";
+import { useInfiniteScroll } from "@/composables/useInfiniteScroll";
+
+
 defineOptions({
   name: "HomeView",
 });
@@ -56,6 +59,12 @@ const { fetchNews, loadMore } = store;
 const { filteredNews } = storeToRefs(store);
 const { searchValue } = storeToRefs(store);
 const isLoading = computed( () => store.isLoading)
+
+useInfiniteScroll( () => {
+  loadMore()
+})
+
+loadMore()
 
 let created = ref(true);
 

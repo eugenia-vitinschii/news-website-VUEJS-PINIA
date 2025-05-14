@@ -1,5 +1,5 @@
 <template>
-  <div class="home__item">
+  <div class="home__item masonry__item">
     <!-- home img -->
     <div class="home__img">
       <img :src="img" 

@@ -29,6 +29,7 @@ npm run dev
 - Skeleton
 - Infinite scroll
 - <transition-group />
+- Grid masonry
 
 ### News website short about:
 *  <meta > description, keywords, theme-color...

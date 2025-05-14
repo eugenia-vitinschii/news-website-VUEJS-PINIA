@@ -7,14 +7,14 @@
         <div class="home__filters">
           <input type="text" id="search-input" v-model="searchValue" placeholder="Search news" />
           <p class="body-text" v-show="searchValue.length > 0">
-            {{ filteredNews.length }} result(s) for "{{ searchValue }}""
+            {{ searchNewsByTitile.length }} result(s) for "{{ searchValue }}""
           </p>
         </div>
         <!-- items wrapper -->
-        <div class="home__items">
+        <div class="home__items masonry">
           <transition-group name="fade-items">
              <the-item 
-                v-for="item in filteredNews" 
+                v-for="item in searchNewsByTitile" 
                 :key="item.title" 
                 :id="item.id" 
                 :img="item.image_url"
@@ -42,7 +42,7 @@
 
 <script setup>
 //vue
-import { defineOptions, onMounted, watch, ref, onUnmounted, computed } from "vue";
+import { defineOptions, onMounted, watch, onUnmounted, computed } from "vue";
 
 //import components
 import TheItem from "@/components/sections/TheItem.vue";
@@ -52,17 +52,22 @@ import TheSkeleton from "@/components/core/TheSkeleton.vue";
 import { useNewsStore } from "@/stores/news";
 import { storeToRefs } from "pinia";
 
+//InfiniteScroll
 import { useInfiniteScroll } from "@/composables/useInfiniteScroll";
 
-
+//component settings
 defineOptions({
   name: "HomeView",
 });
 
+//pinia news store
 const store = useNewsStore();
 const { fetchNews, loadMore } = store;
-const { filteredNews } = storeToRefs(store);
-const { searchValue } = storeToRefs(store);
+
+//acctions & getters
+const { searchNewsByTitile, searchValue  } = storeToRefs(store);
+
+//variables
 const isLoading = computed( () => store.isLoading)
 
 useInfiniteScroll( () => {
@@ -71,14 +76,13 @@ useInfiniteScroll( () => {
 
 loadMore()
 
-let created = ref(true);
-
+//wach news
 watch(searchValue, () => {
   fetchNews();
 });
 
+//hooks
 onUnmounted(() => {
-  console.log(created.value, "clean news, onUnmounted");
   store.$reset();
 });
 

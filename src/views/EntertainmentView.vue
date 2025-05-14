@@ -17,6 +17,7 @@
          :class="style"
          v-if="created"
          >
+         <transition-group name="fade-items">
            <the-category
              v-for="item in getNewsByCategory('entertainment')"
              :key="item.id"
@@ -29,6 +30,8 @@
                          :source_url="item.source_url"
             :source_icon="item.source_icon"
            />
+         </transition-group>
+          
          </div>
        </div>
      </div>

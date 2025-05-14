@@ -15,16 +15,18 @@ export const useNewsStore = defineStore("newsId", {
     getNews(state){
       return state.news
     },
+    // sort by priority
+    sortedNews: (state) => {
+      return [...state.news].sort((a, b) => a.source_priority - b.source_priority);
+    },
+    //search
     filteredNews: (state) => {
-      //for input
-      if(state.searchValue != '' && state.searchValue ){
-        state.news = state.news.filter((item) => {
-          return item.title
-          .toUpperCase()
-          .includes(state.searchValue.toUpperCase())
-        })
-      }
-         return state.news
+      return state.searchValue 
+      ? [...state.news].filter((item) => 
+      item.title.toUpperCase().includes(state.searchValue.toUpperCase())).sort((a, b) =>
+         a.source_priority - b.source_priority) 
+      : [...state.news].sort((a, b) =>
+           a.source_priority - b.source_priority).slice( 0, state.page * state.limit)
     },
     sortByPriority: (state) => {
       return state.news.sort ((a , b)=> a.source_priority > b.source_priority ? 1 : -1)

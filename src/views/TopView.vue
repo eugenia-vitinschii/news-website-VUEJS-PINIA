@@ -18,7 +18,8 @@
         :class="style"
         v-if="created"
         >
-          <the-category
+        <transition-group name="fade-items">
+           <the-category
             v-for="item in store.getTopNews"
             :key="item.id"
             :id="item.id"
@@ -30,6 +31,7 @@
             :source_url="item.source_url"
             :source_icon="item.source_icon"
           />
+        </transition-group>
         </div>    
         <div class="home__button" v-show="store.complected">
            <button class="read-more" @click="loadMore()">read more</button>

@@ -14,7 +14,8 @@
         </div>
         <!-- Politics news items -->
         <div class="category__items" :class="style" v-if="created">
-          <the-category
+          <transition-group name="fade-items">
+            <the-category
             v-for="item in getNewsByCategory('politics')"
             :key="item.id"
             :id="item.id"
@@ -26,7 +27,14 @@
             :source_url="item.source_url"
             :source_icon="item.source_icon"
           />
+          </transition-group>
         </div>
+        <!-- category skeleton -->
+         <div class="category-items" v-if="isLoading">
+          <transition-group name="fade-items">
+            <the-category-skeleton v-for="i in 5" :key="i"/>
+          </transition-group>
+         </div>
       </div>
     </div>
   </div>
@@ -34,12 +42,14 @@
  
  <script setup>
 //vue
-import { defineOptions, onMounted, ref, onUnmounted } from "vue";
+import { defineOptions, onMounted, ref, onUnmounted, computed } from "vue";
 
 //components
 import TheCategoryNav from "@/components/core/TheCategoryNav.vue";
 import TheCategory from "@/components/sections/TheCategory.vue";
 import TheViewToggle from "@/components/components/TheViewToggle.vue";
+import TheCategorySkeleton from "@/components/core/TheCategorySkeleton.vue";
+
 //pinia
 import { useNewsStore } from "@/stores/news";
 import { storeToRefs } from "pinia";
@@ -61,7 +71,9 @@ const store = useNewsStore();
 const { fetchNews } = store;
 const { getNewsByCategory } = storeToRefs(store);
 
+const isLoading = computed( () => store.isLoading)
 let created = ref(false);
+
 //get news
 onMounted(() => {
   created.value = true;

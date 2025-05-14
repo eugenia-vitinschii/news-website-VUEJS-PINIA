@@ -18,7 +18,8 @@
         :class="style"
         v-if="created"
         >
-          <the-category
+        <transition-group name="fade-items">
+              <the-category
             v-for="item in getNewsByCategory('sports')"
             :key="item.id"
             :id="item.id"
@@ -29,6 +30,8 @@
             :source_url="item.source_url"
             :source_icon="item.source_icon"
           />
+        </transition-group>
+      
         </div>
       </div>
     </div>

@@ -28,6 +28,7 @@ npm run dev
 ### Features
 - Skeleton
 - Infinite scroll
+- <transition-group />
 
 ### News website short about:
 *  <meta > description, keywords, theme-color...

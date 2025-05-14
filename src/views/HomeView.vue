@@ -11,7 +11,8 @@
           </p>
         </div>
         <div class="home__items">
-          <the-item 
+          <transition-group name="fade-items">
+             <the-item 
           v-for="item in filteredNews" 
           :key="item.title" 
           :id="item.id" 
@@ -23,9 +24,13 @@
             :ai_tag="item.ai_tag" 
             :keywords="item.keywords" 
             />
+          </transition-group>
         </div>
                 <div class="home__items" v-if="isLoading">
-          <the-skeleton v-for="i in 5" :key="i" />
+                  <transition-group name="fade-items">
+                     <the-skeleton v-for="i in 5" :key="i" />
+                  </transition-group>
+         
         </div>
         <div class="home__button" v-show="store.complected">
           <button class="read-more" @click="loadMore()">read more</button>

@@ -2,8 +2,10 @@
 
 .skeleton
    background-color: var(--block-color, #e0e0e0)
-   display: grid
-   grid-template-columns: repeat(2, 1fr)
+   @include news-item()
+   display: flex
+   flex-direction: column
+   width: 100%
    @include news-item()
    &__img
       @include skeleton-item(100%, 200px, 0px)
@@ -11,7 +13,7 @@
       @include skeleton-item(60%, 20px, 10px)
    &__text
       @include skeleton-item(100%, 20px, 0px)
-      grid-area: 2 / 1 / 3 / 3
+
 
 //shimer styles
 .shimmer

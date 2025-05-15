@@ -6,7 +6,7 @@ export const useNewsStore = defineStore("newsId", {
   state: () => ({
     news: [],
     searchValue: '',
-    limit: 5,
+    limit: 6,
     page: 1,
     complected: true,
     isLoading: false
@@ -18,12 +18,15 @@ export const useNewsStore = defineStore("newsId", {
     },
     //search
     searchNewsByTitile: (state) => {
-      return state.searchValue 
-      ? [...state.news].filter((item) => 
-      item.title.toUpperCase().includes(state.searchValue.toUpperCase())).sort((a, b) =>
-         a.source_priority - b.source_priority) 
-      : [...state.news].sort((a, b) =>
-           a.source_priority - b.source_priority).slice( 0, state.page * state.limit)
+           //for input
+      if(state.searchValue != '' && state.searchValue ){
+        state.news = state.news.filter((item) => {
+          return item.title
+          .toUpperCase()
+          .includes(state.searchValue.toUpperCase())
+        })
+      }
+         return state.news
     },
     //get news  by ai_tag
     getNewsByCategory: (state) =>{

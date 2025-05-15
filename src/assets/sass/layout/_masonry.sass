@@ -1,8 +1,11 @@
 //masonry.sass
 
 .masonry
-   display: grid
-   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
-   gap: 1em
+   column-count: 3
    &__item
       break-inside: avoid
+
+//mobile devices
+@media (max-width: 767px)
+   .masonry
+      column-count: 2

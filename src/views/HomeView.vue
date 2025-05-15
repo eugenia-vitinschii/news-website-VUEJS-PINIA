@@ -15,7 +15,7 @@
           <transition-group name="fade-items">
              <the-item 
                 v-for="item in searchNewsByTitile" 
-                :key="item.title" 
+                :key="item.id" 
                 :id="item.id" 
                 :img="item.image_url"
                 :title="item.title" 
@@ -25,15 +25,13 @@
                 :ai_tag="item.ai_tag" 
                 :keywords="item.keywords" 
             />
+            
           </transition-group>
         </div>
-        <div class="home__items" v-if="isLoading">
+        <div class="home__items masonry" v-if="isLoading">
           <transition-group name="fade-items">
             <the-skeleton v-for="i in 5" :key="i" />
           </transition-group>
-        </div>
-        <div class="home__button" v-show="store.complected">
-          <button class="read-more" @click="loadMore()">read more</button>
         </div>
       </div>
     </div>
@@ -42,7 +40,7 @@
 
 <script setup>
 //vue
-import { defineOptions, onMounted, watch, onUnmounted, computed } from "vue";
+import { defineOptions, onMounted, watch, computed } from "vue";
 
 //import components
 import TheItem from "@/components/sections/TheItem.vue";
@@ -62,7 +60,7 @@ defineOptions({
 
 //pinia news store
 const store = useNewsStore();
-const { fetchNews, loadMore } = store;
+const {  loadMore } = store;
 
 //acctions & getters
 const { searchNewsByTitile, searchValue  } = storeToRefs(store);
@@ -78,15 +76,10 @@ loadMore()
 
 //wach news
 watch(searchValue, () => {
-  fetchNews();
+  loadMore();
 });
 
 //hooks
-onUnmounted(() => {
-  store.$reset();
-});
-
-//get news
 onMounted( async() => {
   await loadMore();
 });

@@ -28,7 +28,7 @@ npm run dev
 ### Features
 - Skeleton
 - Infinite scroll
-- <transition-group />
+- transition-group 
 - Grid masonry
 
 ### News website short about:
